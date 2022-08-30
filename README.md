@@ -1,1 +1,1 @@
-# game-of-alice
+# Game of Alice
