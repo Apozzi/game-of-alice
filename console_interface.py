@@ -16,18 +16,16 @@ class ConsoleInterface:
                 resultPosPathToDraw.append(previousPos)
                 xPos = pos[0]; xPreviousPos = previousPos[0]
                 yPos = pos[1]; yPreviousPos = previousPos[1]
-                if xPos < xPreviousPos:
-                    for x in range(xPos, xPreviousPos):
-                         resultPosPathToDraw.append((x, yPos))
-                if yPos < yPreviousPos:
-                    for y in range(yPos, yPreviousPos):
-                         resultPosPathToDraw.append((xPos, y))
-                if xPos > xPreviousPos:
-                    for x in range(xPreviousPos, xPos + 1):
-                         resultPosPathToDraw.append((x, yPos))
-                if yPos > yPreviousPos:
-                    for y in range(yPreviousPos, yPos + 1):
-                         resultPosPathToDraw.append((xPos, y))
+                xMove = 0
+                yMove = 0
+                if xPos < xPreviousPos: xMove = 1
+                if xPos > xPreviousPos: xMove = -1
+                if yPos < yPreviousPos: yMove = 1
+                if yPos > yPreviousPos: yMove = -1
+                while (xPos != xPreviousPos or yPos != yPreviousPos):
+                    resultPosPathToDraw.append((xPos, yPos))
+                    xPos += xMove
+                    yPos += yMove
             previousPos = pos
         self.positionsOfPathToDraw = resultPosPathToDraw
     def clearPath(self):

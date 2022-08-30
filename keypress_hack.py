@@ -54,6 +54,11 @@ KEY_LEFT = 30
 KEY_RIGHT = 32
 SPACE_BAR = 52
 
+KEY_UP_LEFT = 16
+KEY_UP_RIGHT = 18
+KEY_DOWN_LEFT = 44
+KEY_DOWN_RIGHT = 46
+
 class AliceGameExeInputSender:
     def upKey(self):
         PressKey(KEY_UP)
@@ -83,14 +88,29 @@ class AliceGameExeInputSender:
     def __directionKey(self, pathPos, previousPathPos): 
         xPos = pathPos[0]; xPreviousPos = previousPathPos[0]
         yPos = pathPos[1]; yPreviousPos = previousPathPos[1]
+        xDelay = abs(xPreviousPos-xPos)
+        yDelay = abs(yPreviousPos-yPos)
+        if yPos == yPreviousPos:
+            if xPos < xPreviousPos:
+                return (KEY_UP, xDelay)
+            if xPos > xPreviousPos:
+                return (KEY_DOWN, xDelay)
+        if xPos == xPreviousPos:
+            if yPos < yPreviousPos:
+                return (KEY_LEFT, yDelay)  
+            if yPos > yPreviousPos:
+                return (KEY_RIGHT, yDelay)
         if xPos < xPreviousPos:
-            return (KEY_UP, xPreviousPos-xPos)
-        if yPos < yPreviousPos:
-            return (KEY_LEFT, yPreviousPos-yPos)  
+            if yPos < yPreviousPos:
+                return (KEY_UP_LEFT, xDelay + yDelay)
+            if yPos > yPreviousPos:
+                return (KEY_UP_RIGHT, xDelay + yDelay)
         if xPos > xPreviousPos:
-            return (KEY_DOWN, xPos-xPreviousPos)   
-        if yPos > yPreviousPos:
-            return (KEY_RIGHT, yPos-yPreviousPos)         
+            if yPos < yPreviousPos:
+                return (KEY_DOWN_LEFT, xDelay + yDelay)
+            if yPos > yPreviousPos:
+                return (KEY_DOWN_RIGHT, xDelay + yDelay)
+          
     def automate(self, shortestPath):
         time.sleep(2)
         previousPos = None

@@ -31,6 +31,14 @@ class Agent:
         self.__moveOnTable(table, 0, -1)
     def moveRightOnTable(self, table):
         self.__moveOnTable(table, 0, 1)
+    def moveDiagonalUpRightOnTable(self, table):
+        self.__moveOnTable(table, -1, 1)
+    def moveDiagonalUpLeftOnTable(self, table):
+        self.__moveOnTable(table, -1, -1)
+    def moveDiagonalDownLeftOnTable(self, table):
+        self.__moveOnTable(table, 1, -1)
+    def moveDiagonalDownRightOnTable(self, table):
+        self.__moveOnTable(table, 1, -1)
     def kill(self):
         self.alive = False
     def isDead(self):

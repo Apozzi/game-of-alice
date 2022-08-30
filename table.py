@@ -108,12 +108,26 @@ class Table:
             return (posX, posY)
         else:
             return None
+    def __addDiagonalMovementToListOfMovements(self, posX, posY, listOfMovements):
+        topLeftPos= self.moveUsingNumber(posX, posY, -1, -1)
+        topRightPos= self.moveUsingNumber(posX, posY, -1, 1)
+        bottomLeftPos= self.moveUsingNumber(posX, posY, 1, -1)
+        bottomRightPos= self.moveUsingNumber(posX, posY, 1, 1)
+        if (topLeftPos != None):
+            listOfMovements.append(topLeftPos)
+        if (topRightPos != None):
+            listOfMovements.append(topRightPos)
+        if (bottomLeftPos != None):
+            listOfMovements.append(bottomLeftPos)
+        if (bottomRightPos != None):
+            listOfMovements.append(bottomRightPos)
+            
     def getListOfMovementsInPosition(self, posX, posY):
+        listOfMovements = []
         topPos= self.moveUsingNumber(posX, posY, -1, 0)
         bottomPos = self.moveUsingNumber(posX, posY, 1, 0)
         leftPos = self.moveUsingNumber(posX, posY, 0, -1)
         rightPos = self.moveUsingNumber(posX, posY, 0, 1)
-        listOfMovements = []
         if (topPos != None):
             listOfMovements.append(topPos)
         if (bottomPos != None):
@@ -122,4 +136,5 @@ class Table:
             listOfMovements.append(leftPos)
         if (rightPos != None):
             listOfMovements.append(rightPos)
+        self.__addDiagonalMovementToListOfMovements(posX, posY, listOfMovements)
         return listOfMovements

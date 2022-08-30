@@ -14,6 +14,7 @@ import os
 clear = lambda: os.system('cls')
 keyPressed = ''
 activeGame = False
+activeHack = False
 
 def redrawLoop(consoleInterface, char):
         loop = True
@@ -27,21 +28,18 @@ def redrawLoop(consoleInterface, char):
         if (char.isDead()):
             print('You are Dead.')
 
-def main():
-    global activeGame
-    while not activeGame:
+def integrateWithAliceGameExe():
+    global activeHack
+    while activeHack:
         aliceGameBoard = AliceGameExeBoardData()
         aliceGameBoard.loadBoard()
         table = Table(aliceGameBoard.getBoardWidth(), aliceGameBoard.getBoardHeight(), 4)
         agent = Agent()
         consoleInterface = ConsoleInterface(table)
-        #table.addWallsOnBorders()
         table.loadFromList(aliceGameBoard.getBoard())
         playerPos = aliceGameBoard.getPlayerPosition()
         agent.setPosision(playerPos[0], playerPos[1])
-        #agent.setCenterPosision(table.getSize())
         agent.setAgentOnTable(table)
-        #table.createFlagOnRandomNumericLocation()
         thread = threading.Thread(target=redrawLoop, args=(consoleInterface, agent,))
         thread.start()
         directionalGraph = DirectionalGraph()
@@ -60,14 +58,43 @@ def main():
         inputSender.automate(shortestPath)
         time.sleep(6)
 
+def main():
+    global activeGame
+    
+    table = Table(19, 19, 6)
+    table.randomizeTable()
+    agent = Agent()
+    consoleInterface = ConsoleInterface(table)
+    table.addWallsOnBorders()
+    agent.setCenterPosision(table.getSize())
+    agent.setAgentOnTable(table)
+    table.createFlagOnRandomNumericLocation()
+    thread = threading.Thread(target=redrawLoop, args=(consoleInterface, agent,))
+    thread.start()
+    directionalGraph = DirectionalGraph()
+
+    allValidSquaresOnTable = table.getListOfNumericTablePositions() + [agent.getAgentPosition()]
+    directionalGraph.addVerticesFrom(allValidSquaresOnTable)
+    for square in allValidSquaresOnTable:
+        listOfMovementsInSquare = table.getListOfMovementsInPosition(square[0], square[1])
+        for movementsInSquare in listOfMovementsInSquare:
+            directionalGraph.addEdge(square, movementsInSquare)
+    shortestPath = directionalGraph.shortestPath(agent.getAgentPosition(), table.getFlagCoords(), recalc = False)
+    consoleInterface.createPath(shortestPath)
+    consoleInterface.draw()
+
     def on_release(key):
         global activeGame
+        global activeHack
         global keyPressed
         keyPressed = key
         keyPressedAsString = str(format(keyPressed))
         if (keyPressedAsString == "'p'"):
             consoleInterface.clearPath()
             activeGame = True
+        if (keyPressedAsString == "'h'"):
+            activeHack = True
+            integrateWithAliceGameExe()
         if (activeGame):
             print(keyPressedAsString)
             if (keyPressedAsString == "<104>"):
