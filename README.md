@@ -9,7 +9,11 @@ The game has two variations and can be played by two diferent ways, with differe
 
 # Rules
 
-Your character must move the quantity of squares defined by the adjancent number.
+1.Your character must move the quantity of squares defined by the adjancent number.
 
 ![Rule 1](https://adeveloper-image-host.s3.us-east-2.amazonaws.com/alice_game_rules_1.png)
+
+2. Every time that character moves a specified amount every square in that the path of the move is deleted,
+if the path of movement intersect a empty square the character dies.
+
 
