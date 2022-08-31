@@ -1,6 +1,6 @@
 # Game of Alice
 
-What is the Game of Alice? the game of alice is mathematical and numeric puzzle game based on the game "Alice and You in the planet of numbers".
+What is the Game of Alice? the game of alice is mathematical and numeric puzzle game based on the game "Alice and You in the planet of numbers", but simplified for a more general and primitive game without some "Special Mechanics".
 The game is composed by a table of numbers here character move is defined by the numbers on the proximity.
 
 The game has two variations and can be played by two diferent ways, with different objectives.
