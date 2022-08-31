@@ -28,7 +28,7 @@ The only possible movements in this version of the game are Orthogonally Adjance
 
 # Solving the Game of Alice and the Algorithms
 
-
+For resolution of this game we need to use a Directional Graph with every node of this graph being a represetation of moveable square in the Game.
 
 
 
