@@ -11,4 +11,5 @@ The game has two variations and can be played by two diferent ways, with differe
 
 Your character must move the quantity of squares defined by the adjancent number.
 
-https://s3.console.aws.amazon.com/s3/object/adeveloper-image-host?region=us-east-2&prefix=alice_game_rules_1.png
+![Rule 1](https://s3.console.aws.amazon.com/s3/object/adeveloper-image-host?region=us-east-2&prefix=alice_game_rules_1.png)
+
