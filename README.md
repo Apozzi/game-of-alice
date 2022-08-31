@@ -33,7 +33,10 @@ The maximum number of out connections in a node must be 4 (Top, Bottom, Left, Ri
 
 After that is made a path finding Breath Search and is verified a possible intersection in the route.
 
-
+# Solving and hacking the original game.
+ 
+ You can see this algorithm solving the original game in this link: (TO DO)
+ And the code: (TO DO)
 
 
 
