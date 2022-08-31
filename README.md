@@ -24,6 +24,9 @@ The game is made of a table of N x N numbers with randomized numbers and we can 
 
 (TO DO)
 
+# Solving the Game of Alice and the Algorithms
+
+
 
 
 
