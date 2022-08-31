@@ -20,7 +20,10 @@ With the second rule the ilustration of the movement looks more like this.
 
 ![Rule 2](https://adeveloper-image-host.s3.us-east-2.amazonaws.com/alice_game_rules_2.png)
 
-The game is made of a table of NxN numbers with randomized numbers 
+The game is made of a table of N x N numbers with randomized numbers looking like this:
+(TO DO)
+
+
 
 
 
