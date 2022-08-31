@@ -10,7 +10,7 @@ The game has two variations and can be played by two diferent ways, with differe
 # Rules
 
 1. Your character must move the quantity of squares defined by the adjancent number.
-The first rule can  be summarized by this simple image.
+The first rule can  be summarized by this simple image with 1D table with only 1 row.
 
 ![Rule 1](https://adeveloper-image-host.s3.us-east-2.amazonaws.com/alice_game_rules_1.png)
 
@@ -23,6 +23,8 @@ With the second rule the ilustration of the movement looks more like this.
 The game is made of a table of N x N numbers with randomized numbers and we can choose your initial character position randomized too, looking more like this:
 
 (TO DO)
+
+The only possible movements in this version of the game are Orthogonally Adjancent (Right and Straight Angles). 
 
 # Solving the Game of Alice and the Algorithms
 
