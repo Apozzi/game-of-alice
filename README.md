@@ -36,6 +36,7 @@ After that is made a path finding Breath Search and is verified a possible inter
 # Hacking the original game.
  
  You can see this algorithm solving the original game in this link: (TO DO)
+ 
  And the code: (TO DO)
 
 
