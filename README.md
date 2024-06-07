@@ -45,5 +45,3 @@ After that is made a path finding Breath Search and is verified a possible inter
 
 
 
-
-
